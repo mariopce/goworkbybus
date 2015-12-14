@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class MainActivityFragment extends Fragment {
 
     private Button agrafButton;
+    private TextView currentLocationTV;
 
     public MainActivityFragment() {
     }
@@ -23,8 +25,10 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        currentLocationTV = (TextView) rootView.findViewById(R.id.current_location_tv);
         agrafButton =  (Button)rootView.findViewById(R.id.agraf_button);
         agrafButton.setOnClickListener(new ShowToastClickListener("Clicked on Agraf Button"));
+        currentLocationTV.setText("51.22, 19.22");
         return rootView;
     }
     private static class ShowToastClickListener implements View.OnClickListener{
