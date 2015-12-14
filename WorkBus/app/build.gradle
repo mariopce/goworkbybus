@@ -24,9 +24,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     //android
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:23+'
+    compile 'com.android.support:recyclerview-v7:23+'
+    compile 'com.android.support:design:23+'
 
     //library guava
     compile 'com.google.guava:guava:19.0-rc2'
