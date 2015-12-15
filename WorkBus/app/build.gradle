@@ -56,6 +56,8 @@ dependencies {
     //butter knife
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    
+
     //Java Unit test
     provided 'org.glassfish:javax.annotation:10.0-b28'
     testCompile 'org.easytesting:fest-assert-core:2.0M10'

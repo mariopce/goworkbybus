@@ -1,7 +1,5 @@
 package com.tomtom.work.workbus;
 
-import android.location.Location;
-import android.location.LocationListener;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.tomtom.work.workbus.formater.Formatter;
-import com.tomtom.work.workbus.formater.LocationFormatter;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -49,36 +44,6 @@ public class MainActivityFragment extends Fragment {
     public void onPause() {
         super.onPause();
         fastLocationProvider.shutDown();
-    }
-
-    private static class TextViewLocationListener implements LocationListener {
-
-        private TextView textView;
-        private Formatter formatter;
-        public TextViewLocationListener(TextView textView) {
-            this.textView = textView;
-            formatter =  new LocationFormatter(textView.getContext());
-        }
-
-        @Override
-        public void onLocationChanged(Location location) {
-            textView.setText(formatter.format(location));
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
     }
 
     private static class ShowToastClickListener implements View.OnClickListener{
