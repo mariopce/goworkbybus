@@ -1,4 +1,4 @@
-package com.tomtom.work.workbus.formater;
+package com.tomtom.work.workbus.formatter;
 
 import android.content.Context;
 import android.location.Location;

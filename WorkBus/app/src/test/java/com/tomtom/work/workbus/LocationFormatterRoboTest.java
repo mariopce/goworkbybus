@@ -1,11 +1,10 @@
 package com.tomtom.work.workbus;
 
-import android.content.Context;
 import android.location.Location;
 import android.support.annotation.NonNull;
 
-import com.tomtom.work.workbus.formater.Formatter;
-import com.tomtom.work.workbus.formater.LocationFormatter;
+import com.tomtom.work.workbus.formatter.Formatter;
+import com.tomtom.work.workbus.formatter.LocationFormatter;
 
 
 import org.junit.Before;

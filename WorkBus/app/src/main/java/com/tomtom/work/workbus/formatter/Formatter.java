@@ -1,4 +1,4 @@
-package com.tomtom.work.workbus.formater;
+package com.tomtom.work.workbus.formatter;
 
 public interface Formatter<T> {
 

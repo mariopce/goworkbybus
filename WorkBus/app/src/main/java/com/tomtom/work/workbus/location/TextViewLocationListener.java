@@ -1,12 +1,10 @@
 package com.tomtom.work.workbus.location;
 
 import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
 import android.widget.TextView;
 
-import com.tomtom.work.workbus.formater.Formatter;
-import com.tomtom.work.workbus.formater.LocationFormatter;
+import com.tomtom.work.workbus.formatter.Formatter;
+import com.tomtom.work.workbus.formatter.LocationFormatter;
 
 public class TextViewLocationListener extends BaseLocationListener{
 
