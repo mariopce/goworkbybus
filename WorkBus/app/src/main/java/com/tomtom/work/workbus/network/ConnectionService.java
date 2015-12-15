@@ -4,15 +4,27 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
+import com.tomtom.work.workbus.RoadRequestEvent;
+
 public class ConnectionService extends Service {
 
     public ConnectionService() {
     }
 
+    Bus bus = new Bus();
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
+
+    @Subscribe
+    public void request(RoadRequestEvent event){
+
+    }
+
 
     @Override
     public void onDestroy() {
