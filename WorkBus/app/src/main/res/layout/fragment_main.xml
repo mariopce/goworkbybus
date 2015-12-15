@@ -26,8 +26,20 @@
 
     <Button
         android:id="@+id/agraf_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/to_label"
-        android:text="agraf" />
+        android:text="@string/agraf_office" />
+    <Button
+            android:id="@+id/mediahub_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/agraf_button"
+            android:text="@string/media_hub_office" />
+    <Button
+            android:id="@+id/orion_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mediahub_button"
+            android:text="@string/orion_office" />
 </RelativeLayout>
