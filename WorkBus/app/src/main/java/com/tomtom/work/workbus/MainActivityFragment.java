@@ -10,29 +10,40 @@ import android.widget.TextView;
 
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
 
-    private Button agrafButton;
-    private TextView currentLocationTV;
+    @Bind(R.id.current_location_tv)
+    TextView currentLocationTV;
+
     private FastLocationProvider fastLocationProvider;
 
     public MainActivityFragment() {
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        currentLocationTV = (TextView) rootView.findViewById(R.id.current_location_tv);
-        agrafButton =  (Button)rootView.findViewById(R.id.agraf_button);
-        agrafButton.setOnClickListener(new ShowToastClickListener("Clicked on Agraf Button"));
-        currentLocationTV.setText("51.22, 19.22");
+        ButterKnife.bind(this, rootView);
         fastLocationProvider = new FastLocationProvider(getActivity());
         return rootView;
+    }
+
+    @OnClick(R.id.mediahub_button) void clikedOnMediaHub(View view){
+        new ShowToastClickListener("Clicked on Media Button").onClick(view);
+    }
+    @OnClick(R.id.orion_button) void clikedOnOrionOffice(View view){
+        new ShowToastClickListener("Clicked on Orion Button").onClick(view);
+    }
+    @OnClick(R.id.agraf_button) void clikedOnAgrafOffice(View view){
+        new ShowToastClickListener("Clicked on Agraf Button").onClick(view);
     }
 
     @Override

@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 
 import com.tomtom.work.workbus.R;
 
+import timber.log.Timber;
+
 public class LocationFormatter implements Formatter<Location> {
 
     private Context context;
@@ -16,6 +18,10 @@ public class LocationFormatter implements Formatter<Location> {
 
     @Override
     public @NonNull String format(Location input) {
+        if (input==null){
+            Timber.d("location is null");
+            return context.getString(R.string.current_location_is_unknown);
+        }
         return String.format(context.getString(R.string.current_location_message), input.getLatitude(), input.getLongitude());
     }
 }

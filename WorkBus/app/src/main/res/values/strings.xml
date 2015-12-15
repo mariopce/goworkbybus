@@ -6,4 +6,5 @@
     <string name="agraf_office">Agraf</string>
     <string name="media_hub_office">Media hub</string>
     <string name="orion_office">Orion</string>
+    <string name="current_location_is_unknown">Current location is unknown</string>
 </resources>
