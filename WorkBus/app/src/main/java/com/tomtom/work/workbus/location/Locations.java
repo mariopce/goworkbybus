@@ -10,20 +10,20 @@ public class Locations {
     private Locations() {
     }
 
-    public Location getOrionOfficeLocation(){
+    public static Location getOrionOfficeLocation(){
         Location l = new Location("orion");
         l.setLatitude(51.7604829);
         l.setLongitude(19.4624497);
         return l;
     }
 
-    public Location getAgrafOfficeLocation(){
+    public static Location getAgrafOfficeLocation(){
         Location l = new Location("afraf");
         l.setLatitude(51.7590930);
         l.setLongitude(19.449537);
         return l;
     }
-    public Location getMediaOfficeLocation(){
+    public static Location getMediaOfficeLocation(){
         Location l = new Location("orion");
         l.setLatitude(51.7566488);
         l.setLongitude(19.4435929);

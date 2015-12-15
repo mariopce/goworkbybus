@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.squareup.otto.Bus;
+import com.tomtom.work.workbus.location.Locations;
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
 import butterknife.Bind;
@@ -21,6 +23,8 @@ public class MainActivityFragment extends Fragment {
 
     @Bind(R.id.current_location_tv)
     TextView currentLocationTV;
+
+    Bus bus = new Bus();
 
     private FastLocationProvider fastLocationProvider;
 
@@ -37,7 +41,9 @@ public class MainActivityFragment extends Fragment {
     }
 
     @OnClick(R.id.mediahub_button) void clikedOnMediaHub(View view){
+        bus.post(new RoadRequestEvent(Locations.getMediaOfficeLocation()));
         new ShowToastClickListener("Clicked on Media Button").onClick(view);
+        new SendRoadRequest
     }
     @OnClick(R.id.orion_button) void clikedOnOrionOffice(View view){
         new ShowToastClickListener("Clicked on Orion Button").onClick(view);
