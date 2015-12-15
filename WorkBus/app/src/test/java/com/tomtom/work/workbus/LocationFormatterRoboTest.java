@@ -51,6 +51,4 @@ public class LocationFormatterRoboTest {
         assertThat(result).isEqualTo(expected);
     }
 
-
-
 }

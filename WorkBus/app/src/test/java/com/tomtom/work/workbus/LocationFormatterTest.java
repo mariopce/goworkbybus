@@ -28,7 +28,6 @@ public class LocationFormatterTest {
 
     @Mock
     Context context;
-
     @Mock
     Location lodz;
 
@@ -51,6 +50,4 @@ public class LocationFormatterTest {
         //Then formatted text
         assertThat(result).isEqualTo(expected);
     }
-
-
 }

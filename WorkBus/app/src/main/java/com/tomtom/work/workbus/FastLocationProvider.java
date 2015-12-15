@@ -20,7 +20,7 @@ public class FastLocationProvider {
     private LocationManager locationManager;
     private LocationListener listener;
 
-    public FastLocationProvider(Context context){
+    public FastLocationProvider(Context context) {
         this.context = context;
         // Get the location manager
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -34,13 +34,14 @@ public class FastLocationProvider {
         }
     }
 
-    public void startListen(LocationListener listener){
+    public void startListen(LocationListener listener) {
         this.listener = listener;
         Location location = locationManager.getLastKnownLocation(provider);
         listener.onLocationChanged(location);
         locationManager.requestLocationUpdates(provider, MIN_TIME, MIN_DISTANCE_M, listener);
     }
-    public void shutDown(){
+
+    public void shutDown() {
         locationManager.removeUpdates(listener);
     }
 
