@@ -2,31 +2,24 @@ package com.tomtom.work.workbus.location;
 
 import android.location.LocationListener;
 import android.os.Bundle;
-import android.util.Log;
 
-public abstract class BaseLocationListener implements LocationListener{
+import timber.log.Timber;
 
-
-    static final String TAG = "LocationListener";
+public abstract class BaseLocationListener implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onStatusChanged");
-        }
+        Timber.d("onStatusChanged");
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onProviderEnabled" + provider);
-        }
+        Timber.d("onProviderEnabled" + provider);
+
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onProviderDisabled" + provider);
-        }
+        Timber.d("onProviderDisabled" + provider);
     }
 }

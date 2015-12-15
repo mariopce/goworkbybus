@@ -7,6 +7,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.util.Log;
 
+import timber.log.Timber;
+
 /**
  * Created by mario on 14.12.15.
  */
@@ -29,9 +31,7 @@ public class FastLocationProvider {
         Criteria criteria = new Criteria();
         criteria.setSpeedRequired(true);
         provider = locationManager.getBestProvider(criteria, false);
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "Location manager choose the best location provider " + provider);
-        }
+        Timber.d("Location manager choose the best location provider " + provider);
     }
 
     public void startListen(LocationListener listener) {

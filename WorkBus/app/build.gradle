@@ -56,7 +56,8 @@ dependencies {
     //butter knife
     compile 'com.jakewharton:butterknife:7.0.1'
 
-    
+    //logger
+    compile 'com.jakewharton.timber:timber:4.1.0'
 
     //Java Unit test
     provided 'org.glassfish:javax.annotation:10.0-b28'

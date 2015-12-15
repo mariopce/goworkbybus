@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.tomtom.work.workbus.location.TextViewLocationListener;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -46,16 +47,4 @@ public class MainActivityFragment extends Fragment {
         fastLocationProvider.shutDown();
     }
 
-    private static class ShowToastClickListener implements View.OnClickListener{
-        private String message;
-
-        public ShowToastClickListener(String message) {
-            this.message = message;
-        }
-
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(v.getContext(), message, Toast.LENGTH_SHORT).show();
-        }
-    }
 }
