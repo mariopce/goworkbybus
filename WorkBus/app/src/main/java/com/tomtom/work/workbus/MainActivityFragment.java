@@ -24,9 +24,8 @@ public class MainActivityFragment extends Fragment {
     @Bind(R.id.current_location_tv)
     TextView currentLocationTV;
 
-    Bus bus = new Bus();
-
     private FastLocationProvider fastLocationProvider;
+    private SenderRoadRequests senderRoadRequests;
 
     public MainActivityFragment() {
     }
@@ -41,21 +40,24 @@ public class MainActivityFragment extends Fragment {
     }
 
     @OnClick(R.id.mediahub_button) void clikedOnMediaHub(View view){
-        bus.post(new RoadRequestEvent(Locations.getMediaOfficeLocation()));
+        senderRoadRequests.sendRequest(Locations.getMediaOfficeLocation());
         new ShowToastClickListener("Clicked on Media Button").onClick(view);
-        new SendRoadRequest
+
     }
     @OnClick(R.id.orion_button) void clikedOnOrionOffice(View view){
+        senderRoadRequests.sendRequest(Locations.getOrionOfficeLocation());
         new ShowToastClickListener("Clicked on Orion Button").onClick(view);
     }
     @OnClick(R.id.agraf_button) void clikedOnAgrafOffice(View view){
+        senderRoadRequests.sendRequest(Locations.getAgrafOfficeLocation());
         new ShowToastClickListener("Clicked on Agraf Button").onClick(view);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        fastLocationProvider.startListen(new TextViewLocationListener(currentLocationTV));
+        senderRoadRequests =  new SenderRoadRequests(new TextViewLocationListener(currentLocationTV));
+        fastLocationProvider.startListen(senderRoadRequests);
     }
 
     @Override

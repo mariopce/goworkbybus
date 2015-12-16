@@ -25,7 +25,7 @@ public class FastLocationProvider {
     public FastLocationProvider(Context context) {
         this.context = context;
         // Get the location manager
-        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) this.context.getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the locatioin provider -> use
         // default
         Criteria criteria = new Criteria();

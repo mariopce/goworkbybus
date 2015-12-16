@@ -8,6 +8,8 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.tomtom.work.workbus.RoadRequestEvent;
 
+import timber.log.Timber;
+
 public class ConnectionService extends Service {
 
     public ConnectionService() {
@@ -17,18 +19,20 @@ public class ConnectionService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        bus.register(this);
     }
+
 
     @Subscribe
     public void request(RoadRequestEvent event){
-
+        Timber.d("new request " + event);
     }
 
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        bus.unregister(this);
     }
 
     @Override
