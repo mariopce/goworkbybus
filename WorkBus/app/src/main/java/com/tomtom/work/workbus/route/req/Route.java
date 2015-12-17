@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 
-import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 
 @Generated("org.jsonschema2pojo")
 public class Route {
 
     @SerializedName("from")
     @Expose
+
     private From from;
     @SerializedName("to")
     @Expose
+
     private To to;
     @SerializedName("dateTime")
     @Expose
@@ -30,6 +30,7 @@ public class Route {
     private Boolean wheelchairAccessibleTripsOnly;
     @SerializedName("obstacles")
     @Expose
+
     private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 
     /**
@@ -170,15 +171,4 @@ public class Route {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return Objects.toStringHelper(this)
-                      .add("from", from)
-                      .add("to", to)
-                      .add("dateTime", dateTime)
-                      .add("routingType", routingType)
-                      .add("wheelchairAccessibleTripsOnly", wheelchairAccessibleTripsOnly)
-                      .add("obstacles", obstacles)
-                      .toString();
-    }
 }

@@ -37,20 +37,15 @@ public class TransitartServiceRoboTest {
         TransitartRequester requester = new TransitartRequester(RuntimeEnvironment.application);
         TransitartService service =  requester.setupInterface(TransitartService.class);
         //When request
-        Route route  = new Route();
-        From from = new From();
-        from.setLat("51.777745");
-        from.setLng("19.382514");
-        route.setFrom(from);
-        To to = new To();
-        to.setLat("51.760204");
-        to.setLng("19.462814");
-        route.setTo(to);
-        route.setDateTime("17-12-2015 10:00");
-        route.setRoutingType("OPTIMAL");
-        route.setWheelchairAccessibleTripsOnly(false);
+        Route route  = new Route()
+                .withFrom(new From().withLat("51.777745").withLng("19.382514"))
+                .withTo(new To().withLat("51.760204").withLng("19.462814"))
+                .withDateTime("17-12-2015 10:00")
+                .withRoutingType("OPTIMAL")
+                .withWheelchairAccessibleTripsOnly(false);
+
         Observable<Routes> response = service.getDeparture(route);
-        //Then chcek response
+        //Then check response
         Routes routes =  response.toBlocking().first();
         assertThat(routes.getRoutesList()).isNotEmpty();
 
