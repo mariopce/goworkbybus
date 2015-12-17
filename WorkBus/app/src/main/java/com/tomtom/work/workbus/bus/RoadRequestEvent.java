@@ -1,8 +1,10 @@
-package com.tomtom.work.workbus;
+package com.tomtom.work.workbus.bus;
 
 import android.location.Location;
 
-public class RoadRequestEvent {
+import java.io.Serializable;
+
+public class RoadRequestEvent implements Serializable {
 
     private final Location from;
     private final Location to;

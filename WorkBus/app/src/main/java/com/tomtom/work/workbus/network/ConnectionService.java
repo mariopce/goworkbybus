@@ -6,7 +6,7 @@ import android.os.IBinder;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
-import com.tomtom.work.workbus.RoadRequestEvent;
+import com.tomtom.work.workbus.bus.RoadRequestEvent;
 import com.tomtom.work.workbus.bus.BusProvider;
 
 import timber.log.Timber;
