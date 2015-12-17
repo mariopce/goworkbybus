@@ -28,6 +28,7 @@ public class ConnectionService extends Service {
     @Subscribe
     public void request(RoadRequestEvent event){
         Timber.d("new request " + event);
+
     }
 
 

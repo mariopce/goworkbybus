@@ -2,9 +2,11 @@
 package com.tomtom.work.workbus.route.req;
 
 import javax.annotation.Generated;
+
+import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.ToStringBuilder;
+
 
 @Generated("org.jsonschema2pojo")
 public class To {
@@ -64,7 +66,9 @@ public class To {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return Objects.toStringHelper(this)
+                      .add("lat", lat)
+                      .add("lng", lng)
+                      .toString();
     }
-
 }
