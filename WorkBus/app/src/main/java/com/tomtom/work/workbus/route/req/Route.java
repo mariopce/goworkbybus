@@ -1,5 +1,5 @@
 
-package com.tomtom.work.workbus.route;
+package com.tomtom.work.workbus.route.req;
 
 import java.util.ArrayList;
 import java.util.List;

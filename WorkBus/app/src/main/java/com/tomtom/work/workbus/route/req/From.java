@@ -1,5 +1,5 @@
 
-package com.tomtom.work.workbus.route;
+package com.tomtom.work.workbus.route.req;
 
 import javax.annotation.Generated;
 
@@ -8,21 +8,21 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Obstacle {
+public class From {
 
     @SerializedName("lat")
     @Expose
-    private Integer lat;
+    private String lat;
     @SerializedName("lng")
     @Expose
-    private Integer lng;
+    private String lng;
 
     /**
      * 
      * @return
      *     The lat
      */
-    public Integer getLat() {
+    public String getLat() {
         return lat;
     }
 
@@ -31,11 +31,11 @@ public class Obstacle {
      * @param lat
      *     The lat
      */
-    public void setLat(Integer lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public Obstacle withLat(Integer lat) {
+    public From withLat(String lat) {
         this.lat = lat;
         return this;
     }
@@ -45,7 +45,7 @@ public class Obstacle {
      * @return
      *     The lng
      */
-    public Integer getLng() {
+    public String getLng() {
         return lng;
     }
 
@@ -54,11 +54,11 @@ public class Obstacle {
      * @param lng
      *     The lng
      */
-    public void setLng(Integer lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
 
-    public Obstacle withLng(Integer lng) {
+    public From withLng(String lng) {
         this.lng = lng;
         return this;
     }

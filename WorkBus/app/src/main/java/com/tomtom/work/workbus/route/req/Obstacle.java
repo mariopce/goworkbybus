@@ -1,27 +1,28 @@
 
-package com.tomtom.work.workbus.route;
+package com.tomtom.work.workbus.route.req;
 
 import javax.annotation.Generated;
+
+import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Generated("org.jsonschema2pojo")
-public class To {
+public class Obstacle {
 
     @SerializedName("lat")
     @Expose
-    private String lat;
+    private Integer lat;
     @SerializedName("lng")
     @Expose
-    private String lng;
+    private Integer lng;
 
     /**
      * 
      * @return
      *     The lat
      */
-    public String getLat() {
+    public Integer getLat() {
         return lat;
     }
 
@@ -30,11 +31,11 @@ public class To {
      * @param lat
      *     The lat
      */
-    public void setLat(String lat) {
+    public void setLat(Integer lat) {
         this.lat = lat;
     }
 
-    public To withLat(String lat) {
+    public Obstacle withLat(Integer lat) {
         this.lat = lat;
         return this;
     }
@@ -44,7 +45,7 @@ public class To {
      * @return
      *     The lng
      */
-    public String getLng() {
+    public Integer getLng() {
         return lng;
     }
 
@@ -53,18 +54,20 @@ public class To {
      * @param lng
      *     The lng
      */
-    public void setLng(String lng) {
+    public void setLng(Integer lng) {
         this.lng = lng;
     }
 
-    public To withLng(String lng) {
+    public Obstacle withLng(Integer lng) {
         this.lng = lng;
         return this;
     }
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return Objects.toStringHelper(this)
+                      .add("lat", lat)
+                      .add("lng", lng)
+                      .toString();
     }
-
 }

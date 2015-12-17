@@ -1,14 +1,13 @@
 
-package com.tomtom.work.workbus.route;
+package com.tomtom.work.workbus.route.req;
 
 import javax.annotation.Generated;
-
-import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Generated("org.jsonschema2pojo")
-public class From {
+public class To {
 
     @SerializedName("lat")
     @Expose
@@ -35,7 +34,7 @@ public class From {
         this.lat = lat;
     }
 
-    public From withLat(String lat) {
+    public To withLat(String lat) {
         this.lat = lat;
         return this;
     }
@@ -58,16 +57,14 @@ public class From {
         this.lng = lng;
     }
 
-    public From withLng(String lng) {
+    public To withLng(String lng) {
         this.lng = lng;
         return this;
     }
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
-                      .add("lat", lat)
-                      .add("lng", lng)
-                      .toString();
+        return ToStringBuilder.reflectionToString(this);
     }
+
 }
