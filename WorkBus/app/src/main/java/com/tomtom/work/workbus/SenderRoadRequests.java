@@ -1,27 +1,32 @@
 package com.tomtom.work.workbus;
 
 import android.location.Location;
+import android.support.annotation.VisibleForTesting;
 
 import com.squareup.otto.Bus;
 import com.tomtom.work.workbus.bus.BusProvider;
+import com.tomtom.work.workbus.date.DateProvider;
+import com.tomtom.work.workbus.date.RealDateProvider;
 import com.tomtom.work.workbus.location.BaseLocationListener;
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-
-import java.util.TimeZone;
 
 public class SenderRoadRequests extends BaseLocationListener {
+
 
     Bus bus = BusProvider.getDefaultBus();
     private TextViewLocationListener textViewLocationListener;
     private Location from;
+    DateProvider dateProvider;
 
     public SenderRoadRequests(TextViewLocationListener textViewLocationListener) {
         this.textViewLocationListener = textViewLocationListener;
+        dateProvider = new RealDateProvider();
+    }
+
+    @VisibleForTesting
+    public void setDateProvider(DateProvider dateProvider) {
+        this.dateProvider = dateProvider;
     }
 
     @Override
@@ -32,9 +37,7 @@ public class SenderRoadRequests extends BaseLocationListener {
 
     public void sendRequest(Location to) {
         if (from != null) {
-            LocalDateTime localDateTime = LocalDateTime.now(DateTimeZone.getDefault());
-            String now = DateTimeFormat.forPattern("dd-MM-yyyy hh:mm").print(localDateTime);
-            bus.post(new RoadRequestEvent(from, to, now));
+            bus.post(new RoadRequestEvent(from, to, dateProvider.getNowInEuroFormat()));
         }
     }
 }
