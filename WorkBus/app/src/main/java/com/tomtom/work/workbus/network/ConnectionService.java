@@ -7,6 +7,7 @@ import android.os.IBinder;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.tomtom.work.workbus.RoadRequestEvent;
+import com.tomtom.work.workbus.bus.BusProvider;
 
 import timber.log.Timber;
 
@@ -15,10 +16,11 @@ public class ConnectionService extends Service {
     public ConnectionService() {
     }
 
-    Bus bus = new Bus();
+    Bus bus = BusProvider.getDefaultBus();
     @Override
     public void onCreate() {
         super.onCreate();
+        Timber.d("onCreate ");
         bus.register(this);
     }
 
@@ -37,6 +39,7 @@ public class ConnectionService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Timber.d("onStartCommand " + flags +  " startId=" + startId);
         return super.onStartCommand(intent, flags, startId);
     }
 

@@ -3,6 +3,7 @@ package com.tomtom.work.workbus;
 import android.location.Location;
 
 import com.squareup.otto.Bus;
+import com.tomtom.work.workbus.bus.BusProvider;
 import com.tomtom.work.workbus.location.BaseLocationListener;
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
@@ -15,7 +16,7 @@ import java.util.TimeZone;
 
 public class SenderRoadRequests extends BaseLocationListener {
 
-    Bus bus = new Bus();
+    Bus bus = BusProvider.getDefaultBus();
     private TextViewLocationListener textViewLocationListener;
     private Location from;
 
