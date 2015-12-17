@@ -2,7 +2,7 @@
     <string name="app_name">WorkBus</string>
     <string name="action_settings">Settings</string>
     <string name="to_label">to:</string>
-    <string name="current_location_message" formatted="false">Current location %.2f, %.2f</string>
+    <string name="current_location_message" formatted="false">Current location %.6f, %.6f</string>
     <string name="agraf_office">Agraf</string>
     <string name="media_hub_office">Media hub</string>
     <string name="orion_office">Orion</string>

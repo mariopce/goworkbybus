@@ -1,5 +1,8 @@
 package com.tomtom.work.workbus;
 
+import android.content.Intent;
+import android.location.Location;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,8 +24,9 @@ import butterknife.OnClick;
  */
 public class MainActivityFragment extends Fragment {
 
+
     @Bind(R.id.current_location_tv)
-    TextView currentLocationTV;
+    Button currentLocationTV;
 
     private FastLocationProvider fastLocationProvider;
     private SenderRoadRequests senderRoadRequests;
@@ -40,17 +44,37 @@ public class MainActivityFragment extends Fragment {
     }
 
     @OnClick(R.id.mediahub_button) void clikedOnMediaHub(View view){
-        senderRoadRequests.sendRequest(Locations.getMediaOfficeLocation());
-        new ShowToastClickListener("Clicked on Media Button").onClick(view);
+        Location loc = Locations.getMediaOfficeLocation();
+        senderRoadRequests.sendRequest(loc);
+        startMap(loc.getLatitude(), loc.getLongitude(), "Media");
 
     }
     @OnClick(R.id.orion_button) void clikedOnOrionOffice(View view){
-        senderRoadRequests.sendRequest(Locations.getOrionOfficeLocation());
-        new ShowToastClickListener("Clicked on Orion Button").onClick(view);
+        Location loc =Locations.getOrionOfficeLocation();
+        senderRoadRequests.sendRequest(loc);
+        startMap(loc.getLatitude(), loc.getLongitude(), "orion");
     }
     @OnClick(R.id.agraf_button) void clikedOnAgrafOffice(View view){
-        senderRoadRequests.sendRequest(Locations.getAgrafOfficeLocation());
-        new ShowToastClickListener("Clicked on Agraf Button").onClick(view);
+        Location loc = Locations.getAgrafOfficeLocation();
+        senderRoadRequests.sendRequest(loc);
+        startMap(loc.getLatitude(), loc.getLongitude(), "Agraf");
+    }
+
+    @OnClick(R.id.current_location_tv) void clickedOnCurrentLocationButton(View v){
+        Location loc = senderRoadRequests.getFrom();
+        startMap(loc.getLatitude(), loc.getLongitude(), "Current location");
+    }
+
+    public void startMap(double latitude, double longitude, String label){
+
+
+        String uriBegin = "geo:" + latitude + "," + longitude;
+        String query = latitude + "," + longitude + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     @Override

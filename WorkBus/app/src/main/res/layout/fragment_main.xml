@@ -10,7 +10,7 @@
     tools:context=".MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <Button
 
         android:id="@+id/current_location_tv"
         android:layout_width="match_parent"

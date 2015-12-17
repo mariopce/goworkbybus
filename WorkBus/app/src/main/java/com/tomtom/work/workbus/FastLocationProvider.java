@@ -29,7 +29,7 @@ public class FastLocationProvider {
         // Define the criteria how to select the locatioin provider -> use
         // default
         Criteria criteria = new Criteria();
-        criteria.setSpeedRequired(true);
+        criteria.setAccuracy(Criteria.ACCURACY_MEDIUM);
         provider = locationManager.getBestProvider(criteria, false);
         Timber.d("Location manager choose the best location provider " + provider);
     }

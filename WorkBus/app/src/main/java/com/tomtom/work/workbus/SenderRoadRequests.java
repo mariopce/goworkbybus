@@ -36,6 +36,10 @@ public class SenderRoadRequests extends BaseLocationListener {
         from = location;
     }
 
+    public Location getFrom() {
+        return from;
+    }
+
     public void sendRequest(Location to) {
         if (from != null) {
             bus.post(new RoadRequestEvent(from, to, dateProvider.getNowInEuroFormat()));
