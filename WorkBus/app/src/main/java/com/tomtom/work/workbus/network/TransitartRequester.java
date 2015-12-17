@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TransitartRequester {
 
-
     static final String ROOT_URL = "http://api.transitart.io/";
     /**
      * 10MB.
@@ -47,5 +46,4 @@ public class TransitartRequester {
                 .build();
         return builder.create(service);
     }
-
 }

@@ -12,5 +12,4 @@ public interface TransitartService {
 
     @POST("/router/departure?key=lodz")
     Observable<Routes> getDeparture(@Body Route route);
-
 }

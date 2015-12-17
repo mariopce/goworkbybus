@@ -321,4 +321,8 @@ public class IntermediateStop {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return getName() + " \t\t" + getStopDepartureTime();
+    }
 }

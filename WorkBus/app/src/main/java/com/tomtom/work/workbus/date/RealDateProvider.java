@@ -6,7 +6,7 @@ import org.joda.time.format.DateTimeFormat;
 
 public class RealDateProvider implements DateProvider {
 
-    public static final String CURRENT_EURO_TIME_FORMAT = "dd-MM-yyyy hh:mm";
+    public static final String CURRENT_EURO_TIME_FORMAT = "dd-MM-yyyy HH:mm";
 
     public LocalDateTime getNow(){
         return LocalDateTime.now(DateTimeZone.getDefault());

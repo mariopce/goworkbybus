@@ -15,4 +15,16 @@ public class RoadRequestEvent implements Serializable {
         this.to = officeLocation;
         this.when = when;
     }
+
+    public Location getFrom() {
+        return from;
+    }
+
+    public Location getTo() {
+        return to;
+    }
+
+    public String getWhen() {
+        return when;
+    }
 }

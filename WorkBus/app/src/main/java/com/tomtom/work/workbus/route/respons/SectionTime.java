@@ -2,6 +2,8 @@
 package com.tomtom.work.workbus.route.respons;
 
 import javax.annotation.Generated;
+
+import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -61,4 +63,13 @@ public class SectionTime {
         return this;
     }
 
+    @Override
+    public String toString() {
+        if (hours>0){
+            return hours + ":" + minutes;
+        }
+        return minutes + "min";
+
+
+    }
 }

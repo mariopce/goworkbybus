@@ -7,8 +7,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
+
 @Generated("org.jsonschema2pojo")
-public class RoutesList {
+public class RoutesList implements ParentListItem {
 
     @SerializedName("startTime")
     @Expose
@@ -323,4 +325,13 @@ public class RoutesList {
         return this;
     }
 
+    @Override
+    public List<RouteSection> getChildItemList() {
+        return routeSections;
+    }
+
+    @Override
+    public boolean isInitiallyExpanded() {
+        return false;
+    }
 }

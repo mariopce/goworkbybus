@@ -10,10 +10,16 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
+import com.tomtom.work.workbus.bus.BusProvider;
+import com.tomtom.work.workbus.bus.RoutesResponseEvent;
 import com.tomtom.work.workbus.network.ConnectionService;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    Bus bus = BusProvider.getDefaultBus();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,31 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bus.register(this);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, new MainActivityFragment()).commit();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bus.unregister(this);
+    }
+
+    @Subscribe
+    public void onRouteResponseEvent(RoutesResponseEvent event){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, ShowRoutesFragment.newInstance(event))
+                .addToBackStack("res")
+                .commit();
+
     }
 
     @Override
