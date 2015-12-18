@@ -12,7 +12,7 @@ import com.tomtom.work.workbus.location.BaseLocationListener;
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
 
-public class SenderRoadRequests extends BaseLocationListener {
+public class SenderRoadRequests extends BaseLocationListener implements SenderRequester {
 
 
     Bus bus = BusProvider.getDefaultBus();
@@ -36,10 +36,12 @@ public class SenderRoadRequests extends BaseLocationListener {
         from = location;
     }
 
+    @Override
     public Location getFrom() {
         return from;
     }
 
+    @Override
     public void sendRequest(Location to) {
         if (from != null) {
             bus.post(new RoadRequestEvent(from, to, dateProvider.getNowInEuroFormat()));

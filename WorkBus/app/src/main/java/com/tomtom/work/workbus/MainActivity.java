@@ -10,16 +10,22 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.tomtom.work.workbus.bus.BusProvider;
 import com.tomtom.work.workbus.bus.RoutesResponseEvent;
+import com.tomtom.work.workbus.map.MapHandler;
 import com.tomtom.work.workbus.network.ConnectionService;
 
 public class MainActivity extends AppCompatActivity {
 
 
     Bus bus = BusProvider.getDefaultBus();
+    private MainActivityFragment mainFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bus.register(this);
+        mainFragment =  new MainActivityFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, new MainActivityFragment()).commit();
+                .replace(R.id.container, mainFragment).commit();
     }
 
     @Override
@@ -61,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MapHandler.PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                String toastMsg = String.format("Place: %s", place.getName());
+                mainFragment.setChoosenPlace(place);
+            }
+        }
+    }
+
 
     @Override
     protected void onDestroy() {

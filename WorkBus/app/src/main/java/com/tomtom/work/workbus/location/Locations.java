@@ -24,9 +24,9 @@ public class Locations {
         return l;
     }
     public static Location getMediaOfficeLocation(){
-        Location l = new Location("orion");
-        l.setLatitude(51.7566488);
-        l.setLongitude(19.4435929);
+        Location l = new Location("media");
+        l.setLatitude(51.7575177);
+        l.setLongitude(19.4433749);
         return l;
     }
 }
