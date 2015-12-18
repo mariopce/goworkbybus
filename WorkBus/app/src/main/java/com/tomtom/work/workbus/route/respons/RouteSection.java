@@ -1,6 +1,7 @@
 
 package com.tomtom.work.workbus.route.respons;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -9,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 @Generated("org.jsonschema2pojo")
-public class RouteSection {
+public class RouteSection implements Serializable {
 
     @SerializedName("informations")
     @Expose

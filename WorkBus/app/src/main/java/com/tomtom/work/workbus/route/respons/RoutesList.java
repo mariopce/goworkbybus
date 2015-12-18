@@ -1,6 +1,7 @@
 
 package com.tomtom.work.workbus.route.respons;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -10,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 
 @Generated("org.jsonschema2pojo")
-public class RoutesList implements ParentListItem {
+public class RoutesList implements ParentListItem, Serializable{
 
     @SerializedName("startTime")
     @Expose

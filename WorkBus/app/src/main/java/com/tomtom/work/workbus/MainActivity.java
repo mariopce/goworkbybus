@@ -1,6 +1,7 @@
 package com.tomtom.work.workbus;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bus bus = BusProvider.getDefaultBus();
     private MainActivityFragment mainFragment;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +35,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         startService(new Intent(this, ConnectionService.class));
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -51,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, mainFragment).commit();
+
     }
 
     @Override
@@ -60,13 +57,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void onRouteResponseEvent(RoutesResponseEvent event){
+    public void onRouteResponseEvent(final RoutesResponseEvent event){
+        final ShowRoutesFragment showRoutesFragment =  ShowRoutesFragment.newInstance(event);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, ShowRoutesFragment.newInstance(event))
+                .replace(R.id.container, showRoutesFragment)
                 .addToBackStack("res")
                 .commit();
-
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String time =  showRoutesFragment.getChooserFinishTime().or("za 20 min");
+                final String message = "Szefie będę " + time +", sorry";
+                Snackbar.make(view, message, Snackbar.LENGTH_LONG)
+                        .setAction("Wyslij", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Uri smsUri = Uri.parse("tel:");
+                                Intent intent = new Intent(Intent.ACTION_VIEW, smsUri);
+                                intent.putExtra("sms_body", message);
+                                intent.setType("vnd.android-dir/mms-sms");
+                                startActivity(intent);
+                            }
+                        }).show();
+            }
+        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -106,5 +121,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setSendButtonVisibility(int visible) {
+        fab.setVisibility(visible);
     }
 }

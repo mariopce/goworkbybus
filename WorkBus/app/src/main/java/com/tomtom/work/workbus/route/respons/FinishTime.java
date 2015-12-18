@@ -7,8 +7,10 @@ import com.google.common.base.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("org.jsonschema2pojo")
-public class FinishTime {
+public class FinishTime implements Serializable {
 
     @SerializedName("hour")
     @Expose

@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.common.base.Optional;
+
+import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.tomtom.work.workbus.bus.RoutesResponseEvent;
 import com.tomtom.work.workbus.route.RoutesExpandableAdapter;
 import com.tomtom.work.workbus.route.respons.RoutesList;
@@ -23,6 +26,7 @@ public class ShowRoutesFragment extends Fragment {
 
     public static final String EVENT_KEY = "event";
     private List<RoutesList> routes;
+    private RoutesList chooserRoute;
 
     public static ShowRoutesFragment newInstance(final RoutesResponseEvent event) {
         ShowRoutesFragment f = new ShowRoutesFragment();
@@ -52,9 +56,27 @@ public class ShowRoutesFragment extends Fragment {
         ButterKnife.bind(this, fragmentView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        RecyclerView.Adapter routeExpandableAdapter = new RoutesExpandableAdapter(getActivity(),routes);
+        RoutesExpandableAdapter routeExpandableAdapter = new RoutesExpandableAdapter(getActivity(),routes);
         recyclerView.setAdapter(routeExpandableAdapter);
+        routeExpandableAdapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
+            @Override
+            public void onListItemExpanded(int position) {
+                chooserRoute = routes.get(position);
+                ((MainActivity)getActivity()).setSendButtonVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onListItemCollapsed(int position) {
+
+            }
+        });
         return fragmentView;
     }
 
+    public Optional<String> getChooserFinishTime() {
+        if (chooserRoute==null){
+            return Optional.absent();
+        }
+        return Optional.fromNullable(chooserRoute.getFinishTime().toString());
+    }
 }
