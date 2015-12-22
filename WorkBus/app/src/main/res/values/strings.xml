@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">WorkBus</string>
     <string name="action_settings">Settings</string>
+    <string name="agraf_office">Agraf</string>
+    <string name="to_label">to:</string>
+    <string name="from_current_location_label">From current location</string>
+    <string name="media_office">media</string>
+    <string name="orion_office">orion</string>
 </resources>

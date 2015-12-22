@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.tomtom.work.workbus"
         minSdkVersion 19
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -17,11 +17,58 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+repositories {
+    jcenter()
+    maven { url 'http://download.crashlytics.com/maven' }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:cardview-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.1.1'
+
+    //library guava
+    compile 'com.google.guava:guava:19.0-rc2'
+
+    //retrofit and conveners
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+
+    //Rx java
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile('com.jakewharton.rxbinding:rxbinding:0.2.0')
+    compile('com.jakewharton.rxbinding:rxbinding-support-v4:0.2.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    //butter knife
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile 'com.squareup:otto:1.3.8'
+    compile 'joda-time:joda-time:2.9.1'
+
+    //logger
+    compile 'com.jakewharton.timber:timber:4.1.0'
+
+    compile 'com.bignerdranch.android:expandablerecyclerview:2.0.4'
+
+    compile 'com.google.android.gms:play-services-base:8.3+'
+    compile 'com.google.android.gms:play-services-location:8.3+'
+
+    //Java Unit test
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'cglib:cglib-nodep:3.1'
+    testCompile 'org.mockito:mockito-all:1.9.5'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    testCompile 'org.robolectric:robolectric:3.0'
 }
