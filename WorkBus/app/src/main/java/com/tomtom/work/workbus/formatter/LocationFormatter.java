@@ -22,6 +22,6 @@ public class LocationFormatter implements Formatter<Location> {
             Timber.d("location is null");
             return context.getString(R.string.current_location_is_unknown);
         }
-        return "";
+        return String.format(context.getString(R.string.current_location_format_string), location.getLatitude(), location.getLongitude());
     }
 }

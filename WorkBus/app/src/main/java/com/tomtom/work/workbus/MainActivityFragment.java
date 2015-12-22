@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tomtom.work.workbus.location.GpsLocationProvider;
+import com.tomtom.work.workbus.location.Locations;
 import com.tomtom.work.workbus.location.TextViewLocationListener;
 
 import butterknife.Bind;
@@ -28,6 +29,9 @@ public class MainActivityFragment extends Fragment {
     @Bind(R.id.current_location_tv)
     TextView currentLocationTextView;
 
+
+    ServiceRequester serviceRequester;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,19 +50,21 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        gpsLocationProvider.startListen(new TextViewLocationListener(currentLocationTextView));
+        serviceRequester = new RouteServiceRequester(new TextViewLocationListener(currentLocationTextView));
+        gpsLocationProvider.startListen(serviceRequester);
     }
+
 
 
     @OnClick(R.id.media_button) void onMediaOfficeClick(){
-
+        serviceRequester.sendRequest(Locations.getOrionOfficeLocation());
     }
 
     @OnClick(R.id.orion_button) void onOrionOfficeClick(){
-
+        serviceRequester.sendRequest(Locations.getOrionOfficeLocation());
     }
 
     @OnClick(R.id.agraf_button) void onAgrafOfficeClick(){
-
+        serviceRequester.sendRequest(Locations.getAgrafOfficeLocation());
     }
 }

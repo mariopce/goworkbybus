@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.tomtom.work.workbus.formatter.LocationFormatter;
 
-public class TextViewLocationListener implements LocationListener {
+public class TextViewLocationListener extends BaseLocationListener {
 
     private final LocationFormatter formatter;
     private TextView currentLocationTextView;
@@ -19,21 +19,8 @@ public class TextViewLocationListener implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        currentLocationTextView.setText(location.getLatitude() + "," + location.getLongitude());
+        currentLocationTextView.setText(formatter.format(location));
     }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
 }

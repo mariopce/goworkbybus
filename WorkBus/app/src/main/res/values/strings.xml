@@ -7,4 +7,5 @@
     <string name="media_office">media</string>
     <string name="orion_office">orion</string>
     <string name="current_location_is_unknown">Current location is unknown</string>
+    <string formatted="false" name="current_location_format_string">Current location is %.2f, %.2f</string>
 </resources>
