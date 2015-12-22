@@ -1,6 +1,7 @@
 
 package com.tomtom.work.workbus;
 
+import android.location.LocationListener;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,13 +52,13 @@ public class MainActivityFragment extends Fragment {
     public void onResume() {
         super.onResume();
         serviceRequester = new RouteServiceRequester(new TextViewLocationListener(currentLocationTextView));
-        gpsLocationProvider.startListen(serviceRequester);
+        gpsLocationProvider.startListen((LocationListener) serviceRequester);
     }
 
 
 
     @OnClick(R.id.media_button) void onMediaOfficeClick(){
-        serviceRequester.sendRequest(Locations.getOrionOfficeLocation());
+        serviceRequester.sendRequest(Locations.getMediaOfficeLocation());
     }
 
     @OnClick(R.id.orion_button) void onOrionOfficeClick(){
