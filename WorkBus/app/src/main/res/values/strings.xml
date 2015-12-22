@@ -6,4 +6,5 @@
     <string name="from_current_location_label">From current location</string>
     <string name="media_office">media</string>
     <string name="orion_office">orion</string>
+    <string name="current_location_is_unknown">Current location is unknown</string>
 </resources>
