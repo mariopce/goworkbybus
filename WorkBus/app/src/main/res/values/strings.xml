@@ -8,4 +8,7 @@
     <string name="orion_office">orion</string>
     <string name="current_location_is_unknown">Current location is unknown</string>
     <string formatted="false" name="current_location_format_string">Current location is %.2f, %.2f</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
