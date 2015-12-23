@@ -3,6 +3,7 @@ package com.tomtom.work.workbus;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bus.register(this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,13 +38,31 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bus.register(this);
+        swapFragment(new MainActivityFragment());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bus.unregister(this);
     }
 
     @Subscribe
     public void onRouteResponse(RouteResponseEvent event){
         RouteFragment fragment = RouteFragment.newInstance((ArrayList<RoutesList>) event.getRoutes());
+        swapFragment(fragment);
+    }
+
+    private void swapFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                                   .replace(R.id.fragment, fragment)
+                                   .replace(R.id.container, fragment)
                                    .addToBackStack("res")
                                    .commit();
     }
